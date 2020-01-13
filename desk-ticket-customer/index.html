@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Desk-Ticket-Customer</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="jumbotron">
+        <label for="creatorName">creatorName: </label>
+        <input type="text" name="creatorName" id="creatorName" /><br />
+        <label for="assign">Assign: </label>
+        <input type="number" name="assignNumber" id="assignNumber" /><br />
+        <label for="Subject">Subject: </label>
+        <input type="text" name="subject" id="subject" />
+        <input type="button" value="submet" onclick="deskresponse()" />click to
+        submit
+
+      </div>
+    </div>
+    <script>
+      var xhttp = new XMLHttpRequest();
+
+      function deskresponse() {
+        const creatorName = document.getElementById("creatorName").value;
+        const assignNumber = document.getElementById("assignNumber").value;
+        const subject = document.getElementById("subject").value;
+        var jsondata = { creatorName, assignNumber, subject };
+        xhttp.open("POST", "http://localhost:3000/Desk");
+
+        xhttp.setRequestHeader(
+          "Content-Type",
+          "application/json;charset=UTF-8"
+        );
+
+        xhttp.send(JSON.stringify(jsondata));
+      }
+
+   
+    </script>
+  </body>
+</html>
